@@ -44,7 +44,7 @@ function App() {
           <Routes>
             <Route path='/' element={!user ? <Login /> : <Navigate to={'/dashboard'} />} />
             <Route path='/register' element={!user ? <Register /> : <Navigate to={'/'} />} />
-            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/dashboard' element={!user ? <Navigate to={'/register'} /> : <Dashboard />} />
           </Routes>
           <Footer />
         </BrowserRouter>

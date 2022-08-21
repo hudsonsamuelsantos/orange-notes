@@ -73,6 +73,12 @@ export const useAuthentication = () => {
         }
     }
 
+    const logout = () => {
+
+        signOut(auth)
+
+    }
+
     useEffect(() => {
         return () => setCancelled(true)
     }, [])
@@ -81,7 +87,8 @@ export const useAuthentication = () => {
         auth,
         createUser,
         error,
-        loading
+        loading,
+        logout
     }
 
 } 
