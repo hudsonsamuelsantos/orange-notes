@@ -23,11 +23,15 @@ export function NavBar() {
                         <li>
                             <NavLink to='/dashboard' className={({ isActive }) => (isActive ? styles.active : '')}>Dashboard</NavLink>
                         </li>
+                        <li>
+                            <NavLink to={'/'} onClick={logout}>Sair</NavLink>
+                        </li>
+                        <li>
+                            <div>Logado como:
+                                <span>{user.displayName}</span>
+                            </div>
+                        </li>
                     </ul>
-                    <div>Logado como:
-                        <span>{user.displayName}</span>
-                        <button onClick={logout}>Sair</button>
-                    </div>
                 </>
             }
 
