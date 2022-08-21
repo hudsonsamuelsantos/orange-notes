@@ -2,7 +2,7 @@ import './App.css'
 
 import { useState, useEffect } from 'react'
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 
 import { onAuthStateChanged } from 'firebase/auth'
 
@@ -42,8 +42,8 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='/register' element={<Register />} />
+            <Route path='/' element={!user ? <Login /> : <Navigate to={'/dashboard'} />} />
+            <Route path='/register' element={!user ? <Register /> : <Navigate to={'/'} />} />
             <Route path='/dashboard' element={<Dashboard />} />
           </Routes>
           <Footer />
