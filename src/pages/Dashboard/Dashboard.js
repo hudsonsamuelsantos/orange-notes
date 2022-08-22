@@ -23,10 +23,12 @@ function Dashboard() {
 
         setFormError('')
 
+        const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
+
         insertDocument({
             notepadTitle,
             notes,
-            tags,
+            tagsArray,
         })
 
     }
@@ -63,6 +65,7 @@ function Dashboard() {
                         {!response.loading && <button className='btn'>Criar Bloco de notas</button>}
                         {response.loading && <button className='btn' disabled>Aguarde...</button>}
                         {response.error && <p className='error'>{response.error}</p>}
+                        {formError && <p className='error'>{formError}</p>}
                     </form>
                 </div>
             </div>
