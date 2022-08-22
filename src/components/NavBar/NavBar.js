@@ -28,11 +28,15 @@ export function NavBar() {
                         </li>
                         <li>
                             <div>Logado como:
-                                <span>{user.displayName}</span>
+                                <span>{' ' + user.displayName}</span>
                             </div>
                         </li>
                     </ul>
                 </>
+            }
+
+            {!user &&
+                <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '')}>Registre-se</NavLink>
             }
 
         </nav>

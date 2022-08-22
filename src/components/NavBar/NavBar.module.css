@@ -2,21 +2,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5em 2em;
-    border-bottom: solid 1px #aaa;
+    padding: 0 2em;
+    border-bottom: solid 1px orange;
+    height: 4rem;
+    margin-bottom: 4rem;
 }
 
 .brand {
     font-size: 1.2em;
-}
-
-.brand span {
-    font-weight: 900;
+    font-weight: bolder;
+    background-image: linear-gradient(to right, orange, darkgray);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: black;
 }
 
 .links_list {
     display: flex;
     list-style: none;
+    color: orange;
 }
 
 .links_list li {
@@ -29,5 +34,4 @@
 
 .active {
     text-decoration: underline;
-    color: #f2f2f2;
 }
