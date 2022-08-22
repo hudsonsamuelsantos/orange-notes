@@ -17,6 +17,15 @@ function Dashboard() {
 
     const { user } = useAuthValue()
 
+    const [query, setQuery] = useState('')
+    const [posts] = useState([])
+
+    const handleSearch = e => {
+
+        e.preventDefault()
+
+    }
+
     const handleSubmit = e => {
 
         e.preventDefault()
@@ -35,6 +44,7 @@ function Dashboard() {
 
     return (
         <div>
+            <h1>Dashboard</h1>
             <div>
                 <div className={styles.create_post}>
                     <h2>Criar novo bloco de notas</h2>
@@ -67,6 +77,21 @@ function Dashboard() {
                         {response.error && <p className='error'>{response.error}</p>}
                         {formError && <p className='error'>{formError}</p>}
                     </form>
+                </div>
+            </div>
+
+            <div>
+                <form onSubmit={handleSearch} className={styles.search_form}>
+                    <input type="text" placeholder='Ou busque por tags...' onChange={e => setQuery(e.target.value)} />
+                    <button className='btn btn-dark'>Pesquisar</button>
+                </form>
+                <div>
+                    <h1>Meus Blocos de notas</h1>
+                    {posts && posts.length === 0 && (
+                        <>
+                            <p>Não foram encontrados blocos</p>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
