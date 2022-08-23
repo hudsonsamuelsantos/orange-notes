@@ -41,6 +41,8 @@ function Dashboard() {
             notepadTitle,
             notes,
             tagsArray,
+            uid: user.uid,
+            createdBy: user.email
         })
 
     }

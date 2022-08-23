@@ -9,7 +9,7 @@ import {
     QuerySnapshot,
 } from 'firebase/firestore'
 
-export const useFetchDocuments = (docCollection, search = null) => {
+export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
     const [documents, setDocuments] = useState(null)
     const [error, setError] = useState(null)
@@ -62,6 +62,6 @@ export const useFetchDocuments = (docCollection, search = null) => {
         return () => setCancelled(true)
     }, [])
 
-    return { documents, loading, error }
+    return { documents, loading, error, uid }
 
 } 
