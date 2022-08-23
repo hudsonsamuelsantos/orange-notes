@@ -56,10 +56,12 @@ export const useFetchDocuments = (docCollection, search = null) => {
 
         loadData()
 
-        useEffect(() => {
-            return () => setCancelled(true)
-        }, [])
-
     }, [docCollection, search, cancelled])
+
+    useEffect(() => {
+        return () => setCancelled(true)
+    }, [])
+
+    return { documents, loading, error }
 
 } 

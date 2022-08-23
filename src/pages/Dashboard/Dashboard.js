@@ -3,8 +3,11 @@ import styles from './Dashboard.module.css'
 import { useState } from 'react'
 
 import { useIsertDocument } from '../../hooks/useInsertDocument'
+import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 
 import { useAuthValue } from '../../context/AuthContext'
+
+import Notepad from '../../components/Notepad/Notepad'
 
 function Dashboard() {
 
@@ -13,12 +16,12 @@ function Dashboard() {
     const [tags, setTags] = useState('')
     const [formError, setFormError] = useState('')
 
-    const { insertDocument, response } = useIsertDocument('posts')
+    const { insertDocument, response } = useIsertDocument('notepads')
 
     const { user } = useAuthValue()
 
     const [query, setQuery] = useState('')
-    const [posts] = useState([])
+    const { documents: notepads, loading } = useFetchDocuments('notepads')
 
     const handleSearch = e => {
 
@@ -46,7 +49,7 @@ function Dashboard() {
         <div>
             <h1>Dashboard</h1>
             <div>
-                <div className={styles.create_post}>
+                <div>
                     <h2>Criar novo bloco de notas</h2>
                     <p>Crie blocos para manter suas anotações organizadas!</p>
                     <form onSubmit={handleSubmit}>
@@ -72,7 +75,7 @@ function Dashboard() {
                                 onChange={e => setTags(e.target.value)}
                             />
                         </label>
-                        {!response.loading && <button className='btn'>Criar Bloco de notas</button>}
+                        {!response.loading && <button className='btn'>Criar</button>}
                         {response.loading && <button className='btn' disabled>Aguarde...</button>}
                         {response.error && <p className='error'>{response.error}</p>}
                         {formError && <p className='error'>{formError}</p>}
@@ -87,7 +90,9 @@ function Dashboard() {
                 </form>
                 <div>
                     <h1>Meus Blocos de notas</h1>
-                    {posts && posts.length === 0 && (
+                    {loading && <p>Carregando...</p>}
+                    {notepads && notepads.map(notepad => <Notepad notepad={notepad} key={notepad.id} />)}
+                    {notepads && notepads.length === 0 && (
                         <>
                             <p>Não foram encontrados blocos</p>
                         </>
