@@ -13,13 +13,19 @@ function Notepad({ notepad }) {
                     {notepad.notes &&
                         notepad.notes.map(note => (
                             <tr key={note}>
-                                {note}
+                                <td>
+                                    {note}
+                                </td>
                             </tr>
                         ))
                     }
                     {notepad.notes && notepad.notes.length === 0 && (
                         <>
-                            <p>Não foram encontradas anotações</p>
+                            <tr>
+                                <td>
+                                    Não foram encontradas anotações
+                                </td>
+                            </tr>
                         </>
                     )}
                 </tbody>
