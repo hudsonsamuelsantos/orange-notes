@@ -9,6 +9,8 @@ import { useAuthValue } from '../../context/AuthContext'
 
 import Notepad from '../../components/Notepad/Notepad'
 
+import { useNavigate } from 'react-router-dom'
+
 function Dashboard() {
 
     const [notepadTitle, setNotepadTitle] = useState('')
@@ -23,9 +25,15 @@ function Dashboard() {
     const [query, setQuery] = useState('')
     const { documents: notepads, loading } = useFetchDocuments('notepads')
 
+    const navigate = useNavigate()
+
     const handleSearch = e => {
 
         e.preventDefault()
+
+        if (query) {
+            return navigate(`/search?q=${query}`)
+        }
 
     }
 
