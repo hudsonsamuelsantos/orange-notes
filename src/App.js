@@ -13,6 +13,7 @@ import { useAuthentication } from './hooks/useAuthentication'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Dashboard from './pages/Dashboard/Dashboard'
+import Search from './pages/Search/Search'
 
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
@@ -46,6 +47,7 @@ function App() {
               <Route path='/' element={!user ? <Login /> : <Navigate to={'/dashboard'} />} />
               <Route path='/register' element={!user ? <Register /> : <Navigate to={'/'} />} />
               <Route path='/dashboard' element={!user ? <Navigate to={'/'} /> : <Dashboard />} />
+              <Route path='/search' element={!user ? <Navigate to={'/'} /> : <Search />} />
             </Routes>
           </div>
           <Footer />
