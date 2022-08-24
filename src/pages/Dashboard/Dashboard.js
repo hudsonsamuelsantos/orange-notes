@@ -55,6 +55,9 @@ function Dashboard() {
             createdBy: user.email
         })
 
+        setNotepadTitle('')
+        setTags('')
+
     }
 
     return (
