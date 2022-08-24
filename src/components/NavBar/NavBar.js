@@ -11,6 +11,7 @@ export function NavBar() {
     const { user } = useAuthValue()
     const { logout } = useAuthentication()
 
+
     return (
         <nav className={styles.nav_bar}>
             <NavLink to='/' className={styles.brand}>
@@ -25,11 +26,6 @@ export function NavBar() {
                         </li>
                         <li>
                             <NavLink to={'/'} onClick={logout}>Sair</NavLink>
-                        </li>
-                        <li>
-                            <div>Logado como:
-                                <span>{' ' + user.displayName}</span>
-                            </div>
                         </li>
                     </ul>
                 </>
