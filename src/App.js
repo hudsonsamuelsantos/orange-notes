@@ -14,6 +14,7 @@ import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Search from './pages/Search/Search'
+import AddNote from './pages/AddNote/AddNote'
 
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
@@ -48,6 +49,7 @@ function App() {
               <Route path='/register' element={!user ? <Register /> : <Navigate to={'/'} />} />
               <Route path='/dashboard' element={!user ? <Navigate to={'/'} /> : <Dashboard />} />
               <Route path='/search' element={!user ? <Navigate to={'/'} /> : <Search />} />
+              <Route path='/add-note:id' element={!user ? <Navigate to={'/'} /> : <AddNote />} />
             </Routes>
           </div>
           <Footer />
