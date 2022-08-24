@@ -21,9 +21,11 @@ function Dashboard() {
     const { insertDocument, response } = useIsertDocument('notepads')
 
     const { user } = useAuthValue()
+    const uid = user.uid
 
     const [query, setQuery] = useState('')
-    const { documents: notepads, loading } = useFetchDocuments('notepads')
+
+    const { documents: notepads, loading } = useFetchDocuments('notepads', null, uid)
 
     const navigate = useNavigate()
 

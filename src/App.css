@@ -1,14 +1,6 @@
 html {
   background-color: #282c34;
   color: #f2f2f2;
-  height: 100%;
-}
-
-html,
-body,
-#root,
-.App {
-  height: 100%;
 }
 
 .App {
