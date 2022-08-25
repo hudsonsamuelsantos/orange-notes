@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './Notepad.module.css'
 
 function Notepad({ notepad }) {
@@ -7,6 +8,11 @@ function Notepad({ notepad }) {
                 <thead>
                     <tr>
                         <th>{notepad.notepadTitle}</th>
+                        <th>
+                            <Link to={`/notes/add/${notepad.id}`} className="btn btn-outline">
+                                + Adicionar anotação
+                            </Link>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

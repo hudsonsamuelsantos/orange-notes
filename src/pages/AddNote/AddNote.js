@@ -4,19 +4,34 @@ import { useNavigate, useParams } from "react-router-dom"
 
 import { useAuthValue } from "../../context/AuthContext"
 
-import { useFetchDocument } from "../../hooks/useFetchDocuments"
+import { useFetchDocument } from '../../hooks/useFetchDocument'
+
+import { useUpdateDocument } from '../../hooks/useUpdateDocument'
+
+import { useFetchDocuments } from "../../hooks/useFetchDocuments"
 
 const AddNote = () => {
 
-    const [notes, setNotes] = useState([]);
-    const [note, setNote] = useState('')
-    const [formError, setFormError] = useState("");
+    const { id } = useParams()
+    const { document: notepad } = useFetchDocument('notepads', id)
 
-    const { user } = useAuthValue();
+    const { documents: initialNotepad } = useFetchDocuments('notepads')
 
-    const navigate = useNavigate();
+    const [notes, setNotes] = useState('')
+    const [initialNote, setInitialNote] = useState()
+    const [formError, setFormError] = useState("")
 
-    //const { insertDocument, response } = useInsertDocument('notepads');
+    const { user } = useAuthValue()
+
+    const navigate = useNavigate()
+
+    const { updateDocument, response } = useUpdateDocument('notepads')
+
+    useEffect(() => {
+        if (initialNotepad) {
+            setInitialNote(initialNotepad[0].notes)
+        }
+    }, [initialNotepad])
 
     const handleSubmit = (e) => {
 
@@ -24,14 +39,22 @@ const AddNote = () => {
 
         setFormError('')
 
-        insertDocument({
-            notes,
+        const notesArray = initialNote.concat(notes)
+
+        const data = {
+            notes: notesArray,
             uid: user.uid,
-            createdBy: user.displayName,
-        });
+            createdBy: user.email
+        }
+
+
+        updateDocument(id, data)
 
         navigate('/dashboard');
+
     };
+
+    console.log(notes);
 
     return (
         <div>
@@ -45,8 +68,8 @@ const AddNote = () => {
                         name='notes'
                         required
                         placeholder='Insira sua anotação'
-                        onChange={(e) => setNote(e.target.value)}
-                        value={note}
+                        onChange={(e) => setNotes([e.target.value])}
+                        value={notes}
                     />
                 </label>
                 {!response.loading && <button className="btn">Criar anotação!</button>}

@@ -49,7 +49,7 @@ function App() {
               <Route path='/register' element={!user ? <Register /> : <Navigate to={'/'} />} />
               <Route path='/dashboard' element={!user ? <Navigate to={'/'} /> : <Dashboard />} />
               <Route path='/search' element={!user ? <Navigate to={'/'} /> : <Search />} />
-              <Route path='/add-note:id' element={!user ? <Navigate to={'/'} /> : <AddNote />} />
+              <Route path='/notes/add/:id' element={!user ? <Navigate to={'/'} /> : <AddNote />} />
             </Routes>
           </div>
           <Footer />
