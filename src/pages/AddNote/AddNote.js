@@ -28,10 +28,12 @@ const AddNote = () => {
     const { updateDocument, response } = useUpdateDocument('notepads')
 
     useEffect(() => {
-        if (initialNotepad) {
-            setInitialNote(initialNotepad[0].notes)
+        if (notepad && notepad !== undefined) {
+            setInitialNote(notepad.notes)
+        } else if (notepad === undefined) {
+            setInitialNote([])
         }
-    }, [initialNotepad])
+    }, [notepad])
 
     const handleSubmit = (e) => {
 
@@ -47,14 +49,13 @@ const AddNote = () => {
             createdBy: user.email
         }
 
-
         updateDocument(id, data)
 
         navigate('/dashboard');
 
     };
 
-    console.log(notes);
+    console.log(notes, initialNote);
 
     return (
         <div>

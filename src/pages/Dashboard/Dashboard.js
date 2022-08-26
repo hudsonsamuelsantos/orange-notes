@@ -106,7 +106,7 @@ function Dashboard() {
                 <div>
                     <h1>Meus Blocos de notas</h1>
                     {loading && <p>Carregando...</p>}
-                    {notepads && notepads.map(notepad => <Notepad notepad={notepad} key={notepad.id} />)}
+                    {notepads && notepads.map(notepad => <Notepad notepad={notepad} key={Math.floor(Math.random() * 999999)} />)}
                     {notepads && notepads.length === 0 && (
                         <>
                             <p>Não foram encontrados blocos</p>

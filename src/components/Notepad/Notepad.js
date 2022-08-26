@@ -35,14 +35,12 @@ function Notepad({ notepad }) {
                 <tbody>
                     {notepad.notes &&
                         notepad.notes.map((note, index) => (
-                            <tr key={note}>
+                            <tr key={Math.floor(Math.random() * 999999)}>
                                 <td>
                                     {note}
                                 </td>
                                 <td>
-                                    <button onClick={() => setSelectedNoteIndex(index)}>
-                                        Excluir
-                                    </button>
+                                    <Link to={`/notes/delete/${notepad.id}/${index}`}>Excluir</Link>
                                 </td>
                             </tr>
                         ))

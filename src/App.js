@@ -18,6 +18,7 @@ import AddNote from './pages/AddNote/AddNote'
 
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
+import DeleteNote from './pages/DeleteNote/DeleteNote'
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
               <Route path='/dashboard' element={!user ? <Navigate to={'/'} /> : <Dashboard />} />
               <Route path='/search' element={!user ? <Navigate to={'/'} /> : <Search />} />
               <Route path='/notes/add/:id' element={!user ? <Navigate to={'/'} /> : <AddNote />} />
+              <Route path='/notes/delete/:id/:index' element={!user ? <Navigate to={'/'} /> : <DeleteNote />} />
             </Routes>
           </div>
           <Footer />
