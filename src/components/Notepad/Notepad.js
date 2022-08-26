@@ -8,16 +8,12 @@ import { useDeleteDocument } from '../../hooks/useDeleteDocument'
 
 function Notepad({ notepad }) {
 
-    const [selectedNoteIndex, setSelectedNoteIndex] = useState()
-
     const { deleteDocument } = useDeleteDocument('notepads')
 
     const notepadId = notepad.id
 
-    console.log(selectedNoteIndex)
-
     return (
-        <div>
+        <div className={styles.block_table}>
             <table>
                 <thead>
                     <tr>
@@ -55,6 +51,20 @@ function Notepad({ notepad }) {
                         </>
                     )}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Tags:</th>
+                        <td>
+                            {notepad.tagsArray &&
+                                notepad.tagsArray.map((tag, index) => (
+                                    <span key={index}>
+                                        {`#${tag}   `}
+                                    </span>
+                                ))
+                            }
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     )

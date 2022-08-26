@@ -63,6 +63,10 @@ function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
+            <form onSubmit={handleSearch} className={styles.search_form}>
+                <input type="text" placeholder='Ou busque por tags...' onChange={e => setQuery(e.target.value)} />
+                <button className='btn btn-dark'>Pesquisar</button>
+            </form>
             <div>
                 <div>
                     <h2>Criar novo bloco de notas</h2>
@@ -99,11 +103,7 @@ function Dashboard() {
             </div>
 
             <div>
-                <form onSubmit={handleSearch} className={styles.search_form}>
-                    <input type="text" placeholder='Ou busque por tags...' onChange={e => setQuery(e.target.value)} />
-                    <button className='btn btn-dark'>Pesquisar</button>
-                </form>
-                <div>
+                <div className={styles.my_blocks}>
                     <h1>Meus Blocos de notas</h1>
                     {loading && <p>Carregando...</p>}
                     {notepads && notepads.map(notepad => <Notepad notepad={notepad} key={Math.floor(Math.random() * 999999)} />)}
