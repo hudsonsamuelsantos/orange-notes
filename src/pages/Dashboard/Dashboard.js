@@ -68,15 +68,13 @@ function Dashboard() {
                                                 </span>
                                             </div>
                                         </div>
-                                        <Link to={'/'}>- Ver anotações</Link>
-                                        <Link to={'/'} onClick={() => deleteDocument(notepad.id)}>- Excluir</Link>
+                                        <Link to={`/notes/${notepad.id}`}>- Ver anotações</Link>
+                                        <Link to={'/'} onClick={() => deleteDocument(notepad.id)}>- Excluir bloco</Link>
                                     </div>
                                 ))
                             }
                             {notepads && notepads.length === 0 && (
-                                <tr>
-                                    <td>Você ainda não criou nenhum Bloco de Notas...</td>
-                                </tr>
+                                <span>Você ainda não criou nenhum bloco de notas...</span>
                             )}
                         </div>
                     </div>

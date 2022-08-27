@@ -6,6 +6,8 @@ import { useAuthValue } from '../../context/AuthContext'
 
 import { useNavigate } from 'react-router-dom'
 
+import { Link } from 'react-router-dom'
+
 function AddNotepad() {
 
     const [notepadTitle, setNotepadTitle] = useState('')
@@ -44,7 +46,8 @@ function AddNotepad() {
 
     return (
         <div>
-            <h2>Criar novo bloco de notas</h2>
+            <Link to={`/dashboard`}>- Voltar</Link>
+            <h1>Criar novo bloco de notas</h1>
             <p>Crie blocos para manter suas anotações organizadas!</p>
             <form onSubmit={handleSubmit}>
                 <label>

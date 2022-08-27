@@ -49,13 +49,13 @@ const DeleteNote = () => {
 
         updateDocument(id, data)
 
-        navigate('/dashboard')
+        navigate(`/notes/${id}`)
 
     }
 
     console.log(id, index, initialNote);
 
-    const cancel = () => navigate('/dashboard')
+    const cancel = () => navigate(`/notes/${id}`)
     return (
         <div>
             <h2>Tem certeza que deseja excluir essa anotação?</h2>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 import { useAuthValue } from "../../context/AuthContext"
 
@@ -10,9 +10,7 @@ import { useUpdateDocument } from '../../hooks/useUpdateDocument'
 
 import { useFetchDocuments } from "../../hooks/useFetchDocuments"
 
-import { Link } from "react-router-dom"
-
-const AddNote = () => {
+const SeeNotepad = () => {
 
     const { id } = useParams()
     const { document: notepad } = useFetchDocument('notepads', id)
@@ -53,41 +51,33 @@ const AddNote = () => {
 
         updateDocument(id, data)
 
-        navigate(`/notes/${id}`);
+        navigate('/dashboard')
 
-    };
-
-    console.log(notes, initialNote);
+    }
 
     return (
         <div>
-            <Link to={`/notes/${id}`}>- Voltar</Link>
-            <h1>Adicionar anotação</h1>
-            <p>Adicione uma anotação ao seu bloco de notas!</p>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <span>Anotação:</span>
-                    <input
-                        type='text'
-                        name='notes'
-                        required
-                        placeholder='Insira sua anotação'
-                        onChange={(e) => setNotes([e.target.value])}
-                        value={notes}
-                    />
-                </label>
-                {!response.loading && <button className="btn">Criar anotação!</button>}
-                {response.loading && (
-                    <button className="btn" disabled>
-                        Aguarde.. .
-                    </button>
-                )}
-                {(response.error || formError) && (
-                    <p className="error">{response.error || formError}</p>
-                )}
-            </form>
+            <Link to={`/dashboard`}>- Voltar</Link>
+            <h1>{notepad && notepad.notepadTitle}</h1>
+
+            <div>
+                <div>
+                    <Link to={`/notes/add/${id}`}>+ Nova Anotação</Link>
+                </div>
+                {notepad &&
+                    notepad.notes.map((note, index) => (
+                        <div key={index}>
+                            <span>{note}</span>
+                            <Link to={`/notes/delete/${id}/${index}`}>- Excluir</Link>
+                        </div>
+                    ))
+                }
+                {notepad && notepad.notes.length === 0 &&
+                    <span>Você ainda não criou nenhuma anotação...</span>
+                }
+            </div>
         </div>
     );
 };
 
-export default AddNote
+export default SeeNotepad

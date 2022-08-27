@@ -17,10 +17,11 @@ import Search from './pages/Search/Search'
 import AddNote from './pages/AddNote/AddNote'
 import DeleteNote from './pages/DeleteNote/DeleteNote'
 import AddNotepad from './pages/AddNotepad/AddNotepad'
+import SeeNotepad from './pages/SeeNotepad/SeeNotepad'
+
 
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
-
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
               <Route path='/register' element={!user ? <Register /> : <Navigate to={'/'} />} />
               <Route path='/dashboard' element={!user ? <Navigate to={'/'} /> : <Dashboard />} />
               <Route path='/add-notepad' element={!user ? <Navigate to={'/'} /> : <AddNotepad />} />
+              <Route path='/notes/:id' element={!user ? <Navigate to={'/'} /> : <SeeNotepad />} />
               <Route path='/search' element={!user ? <Navigate to={'/'} /> : <Search />} />
               <Route path='/notes/add/:id' element={!user ? <Navigate to={'/'} /> : <AddNote />} />
               <Route path='/notes/delete/:id/:index' element={!user ? <Navigate to={'/'} /> : <DeleteNote />} />
