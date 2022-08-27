@@ -2,23 +2,14 @@ import styles from './Dashboard.module.css'
 
 import { useState } from 'react'
 
-import { useIsertDocument } from '../../hooks/useInsertDocument'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
+import { useDeleteDocument } from '../../hooks/useDeleteDocument'
 
 import { useAuthValue } from '../../context/AuthContext'
 
-import Notepad from '../../components/Notepad/Notepad'
-
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function Dashboard() {
-
-    const [notepadTitle, setNotepadTitle] = useState('')
-    const [notes, setNotes] = useState([])
-    const [tags, setTags] = useState('')
-    const [formError, setFormError] = useState('')
-
-    const { insertDocument, response } = useIsertDocument('notepads')
 
     const { user } = useAuthValue()
     const uid = user.uid
@@ -28,6 +19,8 @@ function Dashboard() {
     const { documents: notepads, loading } = useFetchDocuments('notepads', null, uid)
 
     const navigate = useNavigate()
+
+    const { deleteDocument } = useDeleteDocument('notepads')
 
     const handleSearch = e => {
 
@@ -39,48 +32,58 @@ function Dashboard() {
 
     }
 
-    const handleSubmit = e => {
-
-        e.preventDefault()
-
-        setFormError('')
-
-        const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
-
-        insertDocument({
-            notepadTitle,
-            notes,
-            tagsArray,
-            uid: user.uid,
-            createdBy: user.email
-        })
-
-        setNotepadTitle('')
-        setTags('')
-
-    }
-
     return (
         <div>
             <h1>Dashboard</h1>
-            <form onSubmit={handleSearch} className={styles.search_form}>
+            <form onSubmit={handleSearch}>
                 <input type="text" placeholder='Ou busque por tags...' onChange={e => setQuery(e.target.value)} />
-                <button className='btn btn-dark'>Pesquisar</button>
+                <button>Pesquisar</button>
             </form>
 
             <div>
-                <div className={styles.my_blocks}>
-                    <h1>Meus Blocos de notas</h1>
+                <div>
                     {loading && <p>Carregando...</p>}
-                    {notepads && notepads.map(notepad => <Notepad notepad={notepad} key={Math.floor(Math.random() * 999999)} />)}
-                    {notepads && notepads.length === 0 && (
-                        <>
-                            <p>Não foram encontrados blocos</p>
-                        </>
-                    )}
+                    <div>
+                        <div>
+                            <span>- Meus Blocos de Notas</span>
+                            <Link to={'/add-notepad'}>+ Novo Bloco</Link>
+                        </div>
+
+                        <div>
+                            {notepads &&
+                                notepads.map(notepad => (
+                                    <div key={notepad.id}>
+                                        <div>
+                                            <span>{notepad.notepadTitle}</span>
+                                            <div>
+                                                <span>Tags:</span>
+                                                <span>
+                                                    {notepad.tagsArray &&
+                                                        notepad.tagsArray.map((tag, index) => (
+                                                            <span key={index}>
+                                                                {`#${tag}   `}
+                                                            </span>
+                                                        ))
+                                                    }
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <Link to={'/'}>- Ver anotações</Link>
+                                        <Link to={'/'} onClick={() => deleteDocument(notepad.id)}>- Excluir</Link>
+                                    </div>
+                                ))
+                            }
+                            {notepads && notepads.length === 0 && (
+                                <tr>
+                                    <td>Você ainda não criou nenhum Bloco de Notas...</td>
+                                </tr>
+                            )}
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 
