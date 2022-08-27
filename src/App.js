@@ -15,10 +15,12 @@ import Register from './pages/Register/Register'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Search from './pages/Search/Search'
 import AddNote from './pages/AddNote/AddNote'
+import DeleteNote from './pages/DeleteNote/DeleteNote'
+import AddNotepad from './pages/AddNotepad/AddNotepad'
 
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
-import DeleteNote from './pages/DeleteNote/DeleteNote'
+
 
 function App() {
 
@@ -49,6 +51,7 @@ function App() {
               <Route path='/' element={!user ? <Login /> : <Navigate to={'/dashboard'} />} />
               <Route path='/register' element={!user ? <Register /> : <Navigate to={'/'} />} />
               <Route path='/dashboard' element={!user ? <Navigate to={'/'} /> : <Dashboard />} />
+              <Route path='/add-notepad' element={!user ? <Navigate to={'/'} /> : <AddNotepad />} />
               <Route path='/search' element={!user ? <Navigate to={'/'} /> : <Search />} />
               <Route path='/notes/add/:id' element={!user ? <Navigate to={'/'} /> : <AddNote />} />
               <Route path='/notes/delete/:id/:index' element={!user ? <Navigate to={'/'} /> : <DeleteNote />} />

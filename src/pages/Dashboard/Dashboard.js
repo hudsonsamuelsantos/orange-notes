@@ -67,40 +67,6 @@ function Dashboard() {
                 <input type="text" placeholder='Ou busque por tags...' onChange={e => setQuery(e.target.value)} />
                 <button className='btn btn-dark'>Pesquisar</button>
             </form>
-            <div>
-                <div>
-                    <h2>Criar novo bloco de notas</h2>
-                    <p>Crie blocos para manter suas anotações organizadas!</p>
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            <span>Título do Bloco:</span>
-                            <input
-                                type="text"
-                                name='notepadTitle'
-                                required
-                                placeholder='Insira um título para o seu bloco de notas'
-                                value={notepadTitle}
-                                onChange={e => setNotepadTitle(e.target.value)}
-                            />
-                        </label>
-                        <label>
-                            <span>Tags:</span>
-                            <input
-                                type="text"
-                                name='tags'
-                                required
-                                placeholder='Insira as tags separadas por vírgula'
-                                value={tags}
-                                onChange={e => setTags(e.target.value)}
-                            />
-                        </label>
-                        {!response.loading && <button className='btn'>Criar</button>}
-                        {response.loading && <button className='btn' disabled>Aguarde...</button>}
-                        {response.error && <p className='error'>{response.error}</p>}
-                        {formError && <p className='error'>{formError}</p>}
-                    </form>
-                </div>
-            </div>
 
             <div>
                 <div className={styles.my_blocks}>
