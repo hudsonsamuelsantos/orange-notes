@@ -34,9 +34,14 @@ function Dashboard() {
 
     return (
         <div>
+            <div>
+                <span>Logado como: {user && user.displayName}</span>
+                <span>Nivel 1</span>
+                <span>XP 0/10</span>
+            </div>
             <h1>Dashboard</h1>
             <form onSubmit={handleSearch}>
-                <input type="text" placeholder='Ou busque por tags...' onChange={e => setQuery(e.target.value)} />
+                <input type="text" placeholder='Busque por uma tag...' onChange={e => setQuery(e.target.value)} />
                 <button>Pesquisar</button>
             </form>
 
