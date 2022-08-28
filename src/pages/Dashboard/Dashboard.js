@@ -1,6 +1,6 @@
 import styles from './Dashboard.module.css'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import { useDeleteDocument } from '../../hooks/useDeleteDocument'
@@ -15,6 +15,9 @@ function Dashboard() {
     const uid = user.uid
 
     const [query, setQuery] = useState('')
+    const [points, setPoints] = useState('Carregando...')
+    const [mylevel, setMyLevel] = useState('Carregando...')
+    const [myNextLevelRequirement, setMyNextLevelRequirement] = useState('Carregando...')
 
     const { documents: notepads, loading } = useFetchDocuments('notepads', null, uid)
 
@@ -32,14 +35,72 @@ function Dashboard() {
 
     }
 
-    console.log(user);
+    const checkedLevel = points => {
+
+        let level
+        let nextLevelRequirement
+
+        if (points < 10) {
+            level = 'Nível 1'
+            nextLevelRequirement = '10'
+        } else if (points >= 10 && points < 20) {
+            level = 'Nível 2'
+            nextLevelRequirement = '20'
+        } else if (points >= 20 && points < 30) {
+            level = 'Nível 3'
+            nextLevelRequirement = '30'
+        } else if (points >= 30 && points < 40) {
+            level = 'Nível 4'
+            nextLevelRequirement = '40'
+        } else if (points >= 20 && points < 50) {
+            level = 'Nível 5'
+            nextLevelRequirement = '50'
+        } else {
+            level = 'Nível Expert (Max)'
+            nextLevelRequirement = 'Infinite'
+        }
+
+        return { level, nextLevelRequirement }
+    }
+
+    useEffect(() => {
+
+        setPoints('Carregando...')
+        setMyLevel('Carregando...')
+        setMyNextLevelRequirement('Carregando...')
+
+        if (notepads) {
+
+            let notesCounter = 0
+            let notepadCounter = notepads.length
+
+            notepads.map(notepad => {
+                notesCounter = notesCounter + notepad.notes.length
+            })
+
+            let poitsPerNotepads = 3
+            let notesPoints = notesCounter
+            let notepadPoints = notepadCounter * poitsPerNotepads
+            let totalPoints = notesPoints + notepadPoints
+
+            setPoints(totalPoints)
+
+            let currentLevel = checkedLevel(totalPoints).level
+            let currentNextLevelRequirement = checkedLevel(totalPoints).nextLevelRequirement
+
+            setMyLevel(currentLevel)
+            setMyNextLevelRequirement(currentNextLevelRequirement)
+
+        }
+
+    }, [notepads])
 
     return (
         <div>
             <div>
                 <span>Logado como: {user && user.displayName}</span>
-                <span>Nivel 1</span>
-                <span>XP 0/10</span>
+                <span>{mylevel}</span>
+                <span>Pontuação: {points}/{myNextLevelRequirement}</span>
             </div>
             <h1>Dashboard</h1>
             <form onSubmit={handleSearch}>
