@@ -25,6 +25,9 @@ export function NavBar() {
                             <NavLink to='/dashboard' className={({ isActive }) => (isActive ? styles.active : '')}>Dashboard</NavLink>
                         </li>
                         <li>
+                            <NavLink to='/my-progress' className={({ isActive }) => (isActive ? styles.active : '')}>Meu Progresso</NavLink>
+                        </li>
+                        <li>
                             <NavLink to={'/'} onClick={logout}>Sair</NavLink>
                         </li>
                     </ul>

@@ -18,7 +18,7 @@ import AddNote from './pages/AddNote/AddNote'
 import DeleteNote from './pages/DeleteNote/DeleteNote'
 import AddNotepad from './pages/AddNotepad/AddNotepad'
 import SeeNotepad from './pages/SeeNotepad/SeeNotepad'
-
+import MyProgress from './pages/MyProgress/MyProgress'
 
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
@@ -52,6 +52,7 @@ function App() {
               <Route path='/' element={!user ? <Login /> : <Navigate to={'/dashboard'} />} />
               <Route path='/register' element={!user ? <Register /> : <Navigate to={'/'} />} />
               <Route path='/dashboard' element={!user ? <Navigate to={'/'} /> : <Dashboard />} />
+              <Route path='/my-progress' element={!user ? <Navigate to={'/'} /> : <MyProgress />} />
               <Route path='/add-notepad' element={!user ? <Navigate to={'/'} /> : <AddNotepad />} />
               <Route path='/notes/:id' element={!user ? <Navigate to={'/'} /> : <SeeNotepad />} />
               <Route path='/search' element={!user ? <Navigate to={'/'} /> : <Search />} />
