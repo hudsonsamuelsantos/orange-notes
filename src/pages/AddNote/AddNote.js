@@ -29,14 +29,6 @@ const AddNote = () => {
 
     const { updateDocument, response } = useUpdateDocument('notepads')
 
-    useEffect(() => {
-        if (notepad && notepad !== undefined) {
-            setInitialNote(notepad.notes)
-        } else if (notepad === undefined) {
-            setInitialNote([])
-        }
-    }, [notepad])
-
     const handleSubmit = (e) => {
 
         e.preventDefault()
@@ -53,9 +45,17 @@ const AddNote = () => {
 
         updateDocument(id, data)
 
-        navigate(`/notes/${id}`);
+        navigate(`/notes/${id}`)
 
-    };
+    }
+
+    useEffect(() => {
+        if (notepad && notepad !== undefined) {
+            setInitialNote(notepad.notes)
+        } else if (notepad === undefined) {
+            setInitialNote([])
+        }
+    }, [notepad])
 
     return (
         <div>
