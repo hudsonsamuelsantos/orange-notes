@@ -14,8 +14,8 @@ function UpdateNotepad() {
     const { id } = useParams()
     const { document: notepad } = useFetchDocument('notepads', id)
 
-    const [notepadTitle, setNotepadTitle] = useState('')
-    const [tags, setTags] = useState('')
+    const [notepadTitle, setNotepadTitle] = useState('Carregando...')
+    const [tags, setTags] = useState('Carregando...')
     const [formError, setFormError] = useState('')
 
     useEffect(() => {
@@ -82,7 +82,7 @@ function UpdateNotepad() {
                         onChange={e => setTags(e.target.value)}
                     />
                 </label>
-                {!response.loading && <button className='btn'>Criar</button>}
+                {!response.loading && <button className='btn'>Salvar</button>}
                 {response.loading && <button className='btn' disabled>Aguarde...</button>}
                 {response.error && <p className='error'>{response.error}</p>}
                 {formError && <p className='error'>{formError}</p>}

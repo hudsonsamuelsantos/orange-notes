@@ -68,6 +68,7 @@ const SeeNotepad = () => {
                     notepad.notes.map((note, index) => (
                         <div key={index}>
                             <span>{note}</span>
+                            <Link to={`/notes/update/${id}/${index}`}>- Editar</Link>
                             <Link to={`/notes/delete/${id}/${index}`}>- Excluir</Link>
                         </div>
                     ))

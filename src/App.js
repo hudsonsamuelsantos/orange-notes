@@ -23,6 +23,7 @@ import UpdateNotepad from './pages/UpdateNotepad/UpdateNotepad'
 
 import NavBar from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
+import UpdateNote from './pages/UpdateNote/UpdateNote'
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
               <Route path='/notepads/:id' element={!user ? <Navigate to={'/'} /> : <UpdateNotepad />} />
               <Route path='/search' element={!user ? <Navigate to={'/'} /> : <Search />} />
               <Route path='/notes/add/:id' element={!user ? <Navigate to={'/'} /> : <AddNote />} />
+              <Route path='/notes/update/:id/:index' element={!user ? <Navigate to={'/'} /> : <UpdateNote />} />
               <Route path='/notes/delete/:id/:index' element={!user ? <Navigate to={'/'} /> : <DeleteNote />} />
             </Routes>
           </div>
