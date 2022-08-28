@@ -45,8 +45,6 @@ const DeleteNote = () => {
             createdBy: user.email
         }
 
-        console.log(array);
-
         updateDocument(id, data)
 
         navigate(`/notes/${id}`)

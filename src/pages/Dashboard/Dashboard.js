@@ -137,7 +137,8 @@ function Dashboard() {
                                             </div>
                                         </div>
                                         <Link to={`/notes/${notepad.id}`}>- Ver anotações</Link>
-                                        <Link to={'/'} onClick={() => deleteDocument(notepad.id)}>- Excluir bloco</Link>
+                                        <Link to={`/notepads/${notepad.id}`}>- Editar</Link>
+                                        <Link to={'/'} onClick={() => deleteDocument(notepad.id)}>- Excluir</Link>
                                     </div>
                                 ))
                             }
