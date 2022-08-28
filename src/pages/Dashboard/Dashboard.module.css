@@ -1,0 +1,33 @@
+.user_stats_display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: .8em;
+    width: fit-content;
+    padding: .4em;
+    gap: 1.8em;
+    background-color: orange;
+    color: #000;
+}
+
+.user_stats_display:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.user_name_display,
+.user_level_display,
+.user_points_display {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+@media (max-width:600px) {
+    .user_stats_display {
+        font-size: x-small;
+    }
+
+
+}

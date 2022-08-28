@@ -9,6 +9,8 @@ import { useAuthValue } from '../../context/AuthContext'
 
 import { useNavigate, Link } from 'react-router-dom'
 
+import { TrendUp, Trophy, UserCircle } from 'phosphor-react'
+
 function Dashboard() {
 
     const { user } = useAuthValue()
@@ -97,11 +99,24 @@ function Dashboard() {
 
     return (
         <div>
-            <div>
-                <span>Logado como: {user && user.displayName}</span>
-                <span>{mylevel}</span>
-                <span>Pontuação: {points}/{myNextLevelRequirement}</span>
+            <div
+                onClick={() => navigate('/my-progress')}
+                className={styles.user_stats_display}
+            >
+                <div className={styles.user_name_display}>
+                    <UserCircle size={32} />
+                    {user && user.displayName}
+                </div>
+                <div className={styles.user_level_display}>
+                    <Trophy size={32} />
+                    {mylevel}
+                </div>
+                <div className={styles.user_points_display}>
+                    <TrendUp size={32} />
+                    <span>Pontuação: {points}/{myNextLevelRequirement}</span>
+                </div>
             </div>
+
             <h1>Dashboard</h1>
             <form onSubmit={handleSearch}>
                 <input type="text" placeholder='Busque por uma tag...' onChange={e => setQuery(e.target.value)} />
