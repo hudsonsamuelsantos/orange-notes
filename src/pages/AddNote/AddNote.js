@@ -57,8 +57,6 @@ const AddNote = () => {
 
     };
 
-    console.log(notes, initialNote);
-
     return (
         <div>
             <Link to={`/notes/${id}`}>- Voltar</Link>
