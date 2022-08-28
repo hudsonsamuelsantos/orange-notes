@@ -2,10 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2em;
+    padding: 0 1.6em;
     border-bottom: solid 1px orange;
-    height: 4rem;
+    height: 3.6rem;
     margin-bottom: 2rem;
+    box-sizing: border-box;
 }
 
 .brand {
@@ -34,4 +35,22 @@
 
 .active {
     text-decoration: underline;
+}
+
+@media (max-width:600px) {
+    .nav_bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: fit-content;
+        margin-top: .8em;
+        padding: 0;
+    }
+
+    .links_list {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        font-size: smaller;
+    }
 }
