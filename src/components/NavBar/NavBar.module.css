@@ -12,11 +12,7 @@
 .brand {
     font-size: 1.2em;
     font-weight: bolder;
-    background-image: linear-gradient(to right, orange, darkgray);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: black;
+    color: orange;
 }
 
 .links_list {

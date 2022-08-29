@@ -9,7 +9,7 @@ import { useAuthValue } from '../../context/AuthContext'
 
 import { useNavigate, Link } from 'react-router-dom'
 
-import { TrendUp, Trophy, UserCircle } from 'phosphor-react'
+import { MagnifyingGlass, TrendUp, Trophy, UserCircle } from 'phosphor-react'
 
 function Dashboard() {
 
@@ -118,9 +118,12 @@ function Dashboard() {
             </div>
 
             <h1>Dashboard</h1>
-            <form onSubmit={handleSearch}>
+
+            <form onSubmit={handleSearch} className={styles.search_form}>
                 <input type="text" placeholder='Busque por uma tag...' onChange={e => setQuery(e.target.value)} />
-                <button>Pesquisar</button>
+                <button>
+                    <MagnifyingGlass size={24} />
+                </button>
             </form>
 
             <div>

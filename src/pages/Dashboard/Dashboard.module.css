@@ -4,11 +4,13 @@
     align-items: center;
     border: 1px solid transparent;
     border-radius: .8em;
-    width: fit-content;
+    width: 400px;
     padding: .4em;
     gap: 1.8em;
     background-color: orange;
     color: #000;
+    transition: 0.4s;
+    margin-bottom: 2em;
 }
 
 .user_stats_display:hover {
@@ -24,9 +26,30 @@
     gap: 5px;
 }
 
+.search_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2em auto;
+}
+
+.search_form button {
+    background-color: orange;
+    border: 1px solid orange;
+    border-radius: 0 .8em .8em 0;
+    transition: 0.4s;
+    border-left: 1px solid black;
+}
+
+.search_form button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 @media (max-width:600px) {
     .user_stats_display {
         font-size: x-small;
+        width: 250px;
     }
 
 
