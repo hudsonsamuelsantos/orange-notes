@@ -46,11 +46,17 @@
     cursor: pointer;
 }
 
+.search_form input {
+    flex: 1;
+}
+
 @media (max-width:600px) {
     .user_stats_display {
         font-size: x-small;
         width: 250px;
     }
 
-
+    .search_form {
+        width: 250px;
+    }
 }
