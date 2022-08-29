@@ -9,7 +9,7 @@ import { useAuthValue } from '../../context/AuthContext'
 
 import { useNavigate, Link } from 'react-router-dom'
 
-import { MagnifyingGlass, TrendUp, Trophy, UserCircle } from 'phosphor-react'
+import { MagnifyingGlass, Notepad, PlusCircle, Trash, TrendUp, Trophy, UserCircle } from 'phosphor-react'
 
 function Dashboard() {
 
@@ -17,9 +17,9 @@ function Dashboard() {
     const uid = user.uid
 
     const [query, setQuery] = useState('')
-    const [points, setPoints] = useState('Carregando...')
-    const [mylevel, setMyLevel] = useState('Carregando...')
-    const [myNextLevelRequirement, setMyNextLevelRequirement] = useState('Carregando...')
+    const [points, setPoints] = useState('...')
+    const [mylevel, setMyLevel] = useState('...')
+    const [myNextLevelRequirement, setMyNextLevelRequirement] = useState('...')
 
     const { documents: notepads, loading } = useFetchDocuments('notepads', null, uid)
 
@@ -67,9 +67,9 @@ function Dashboard() {
 
     useEffect(() => {
 
-        setPoints('Carregando...')
-        setMyLevel('Carregando...')
-        setMyNextLevelRequirement('Carregando...')
+        setPoints('...')
+        setMyLevel('...')
+        setMyNextLevelRequirement('...')
 
         if (notepads) {
 
@@ -126,46 +126,57 @@ function Dashboard() {
                 </button>
             </form>
 
-            <div>
+            <div className={styles.dashboard_table}>
+                {loading && <p>Carregando...</p>}
                 <div>
-                    {loading && <p>Carregando...</p>}
-                    <div>
-                        <div>
-                            <span>- Meus Blocos de Notas</span>
-                            <Link to={'/add-notepad'}>+ Novo Bloco</Link>
+                    <div className={styles.dashboard_table_header}>
+                        <div className={styles.dashboard_table_header_title}>
+                            <Notepad size={32} />
+                            <span>Meus Blocos de Notas</span>
                         </div>
 
                         <div>
-                            {notepads &&
-                                notepads.map(notepad => (
-                                    <div key={notepad.id}>
-                                        <div>
-                                            <span>{notepad.notepadTitle}</span>
-                                            <div>
-                                                <span>Tags:</span>
-                                                <span>
-                                                    {notepad.tagsArray &&
-                                                        notepad.tagsArray.map((tag, index) => (
-                                                            <span key={index}>
-                                                                {`#${tag}   `}
-                                                            </span>
-                                                        ))
-                                                    }
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <Link to={`/notes/${notepad.id}`}>- Ver anotações</Link>
-                                        <Link to={`/notepads/${notepad.id}`}>- Editar</Link>
-                                        <Link to={'/'} onClick={() => deleteDocument(notepad.id)}>- Excluir</Link>
-                                    </div>
-                                ))
-                            }
-                            {notepads && notepads.length === 0 && (
-                                <span>Você ainda não criou nenhum bloco de notas...</span>
-                            )}
+                            <Link to={'/add-notepad'} className={styles.dashboard_table_header_add}>
+                                <PlusCircle size={32} color={'darkgreen'} />
+                                <span>Adicionar</span>
+                            </Link>
                         </div>
+
                     </div>
 
+                    <div>
+                        {notepads &&
+                            notepads.map(notepad => (
+                                <div key={notepad.id} className={styles.dashboard_table_notepad}>
+                                    <div>
+                                        <span>{notepad.notepadTitle}</span>
+                                        <div>
+                                            <span>Tags:</span>
+                                            <span>
+                                                {notepad.tagsArray &&
+                                                    notepad.tagsArray.map((tag, index) => (
+                                                        <span key={index}>
+                                                            {`#${tag}   `}
+                                                        </span>
+                                                    ))
+                                                }
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <Link to={`/notes/${notepad.id}`}>
+                                        Ver anotações
+                                    </Link>
+                                    <Link to={`/notepads/${notepad.id}`}>- Editar</Link>
+                                    <Link to={'/'} onClick={() => deleteDocument(notepad.id)}>
+                                        <Trash size={24} color={'red'} />
+                                    </Link>
+                                </div>
+                            ))
+                        }
+                        {notepads && notepads.length === 0 && (
+                            <span>Você ainda não criou nenhum bloco de notas...</span>
+                        )}
+                    </div>
                 </div>
             </div >
         </div >

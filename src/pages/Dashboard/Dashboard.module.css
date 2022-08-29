@@ -50,6 +50,44 @@
     flex: 1;
 }
 
+.dashboard_table_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: orange;
+    color: #000;
+    border-radius: .8em .8em 0 0;
+}
+
+.dashboard_table_header_title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dashboard_table_header_add {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: darkgreen;
+    transition: 0.4s;
+}
+
+.dashboard_table_header_add:hover {
+    opacity: 0.6;
+}
+
+.dashboard_table_notepad {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid orange;
+}
+
+.dashboard_table_header,
+.dashboard_table_notepad {
+    padding: 0.4em 0.8em;
+}
+
 @media (max-width:600px) {
     .user_stats_display {
         font-size: x-small;
