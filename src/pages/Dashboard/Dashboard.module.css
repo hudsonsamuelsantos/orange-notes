@@ -163,6 +163,14 @@
     opacity: 0.6;
 }
 
+.message {
+    background-color: #fff;
+    color: #000;
+    word-wrap: normal;
+    border: 1px solid orange;
+    padding: .6em .6em;
+}
+
 @media (max-width:600px) {
     .user_stats_display {
         font-size: x-small;
@@ -205,6 +213,10 @@
     .edit,
     .delete {
         width: 110px;
+    }
+
+    .message {
+        font-size: smaller;
     }
 
 }

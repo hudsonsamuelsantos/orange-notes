@@ -181,7 +181,9 @@ function Dashboard() {
                             ))
                         }
                         {notepads && notepads.length === 0 && (
-                            <span>Você ainda não criou nenhum bloco de notas...</span>
+                            <div className={styles.message}>
+                                <span>Você ainda não criou nenhum bloco de notas...</span>
+                            </div>
                         )}
                     </div>
                 </div>

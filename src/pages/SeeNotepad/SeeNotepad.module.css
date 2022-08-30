@@ -1,0 +1,79 @@
+.notes_table {
+    width: fit-content;
+}
+
+.notes_table_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: orange;
+    color: #000;
+    border-radius: .8em .8em 0 0;
+}
+
+.notes_table_header a {
+    color: green;
+}
+
+.notes_table_title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.notes_table_add {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: green;
+    transition: 0.4s;
+    font-size: small;
+}
+
+.notes_table_add:hover {
+    opacity: 0.6;
+}
+
+.notes_table_body {
+    display: flex;
+    justify-content: center;
+    border: 1px solid orange;
+    background-color: #fff;
+    color: #000;
+    gap: 24px;
+}
+
+.notes_table_header,
+.notes_table_body {
+    padding: 0.4em 0.8em;
+}
+
+.note {
+    text-align: start;
+    word-wrap: break-word;
+    width: 250px;
+}
+
+.actions {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    gap: 8px;
+    font-size: small;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: blue;
+    transition: 0.4s;
+}
+
+.delete {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: red;
+    transition: 0.4s;
+}

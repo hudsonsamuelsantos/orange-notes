@@ -16,5 +16,6 @@ html {
   align-items: center;
   flex: 1;
   width: 90%;
+  max-width: 90vw;
   margin: auto;
 }
