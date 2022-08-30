@@ -74,6 +74,9 @@ const SeeNotepad = () => {
                         <span>Adicionar</span>
                     </Link>
                 </div>
+                {!notepad &&
+                    <span>Carregando...</span>
+                }
                 {notepad &&
                     notepad.notes.map((note, index) => (
                         <div key={index} className={styles.notes_table_body}>
