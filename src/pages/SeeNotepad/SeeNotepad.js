@@ -11,7 +11,7 @@ import { useFetchDocument } from '../../hooks/useFetchDocument'
 import { useUpdateDocument } from '../../hooks/useUpdateDocument'
 
 import { useFetchDocuments } from "../../hooks/useFetchDocuments"
-import { Note, NotePencil, PlusCircle, Trash } from 'phosphor-react'
+import { ArrowCircleLeft, Note, NotePencil, PlusCircle, Trash } from 'phosphor-react'
 
 const SeeNotepad = () => {
 
@@ -60,7 +60,10 @@ const SeeNotepad = () => {
 
     return (
         <div>
-            <Link to={`/dashboard`}>- Voltar</Link>
+            <Link to={`/dashboard`} className={styles.back_to_dashboard}>
+                <ArrowCircleLeft size={32} />
+                <span>Voltar</span>
+            </Link>
             <h1>{notepad && notepad.notepadTitle}</h1>
 
             <div className={styles.notes_table}>
