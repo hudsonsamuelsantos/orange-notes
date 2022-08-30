@@ -9,7 +9,7 @@ import { useAuthValue } from '../../context/AuthContext'
 
 import { useNavigate, Link } from 'react-router-dom'
 
-import { MagnifyingGlass, Notepad, PlusCircle, Trash, TrendUp, Trophy, UserCircle } from 'phosphor-react'
+import { Eye, MagnifyingGlass, Notepad, NotePencil, PlusCircle, Trash, TrendUp, Trophy, UserCircle } from 'phosphor-react'
 
 function Dashboard() {
 
@@ -98,7 +98,7 @@ function Dashboard() {
     }, [notepads])
 
     return (
-        <div>
+        <div className={styles.dashboard}>
             <div
                 onClick={() => navigate('/my-progress')}
                 className={styles.user_stats_display}
@@ -137,7 +137,7 @@ function Dashboard() {
 
                         <div>
                             <Link to={'/add-notepad'} className={styles.dashboard_table_header_add}>
-                                <PlusCircle size={32} color={'darkgreen'} />
+                                <PlusCircle size={24} color={'green'} />
                                 <span>Adicionar</span>
                             </Link>
                         </div>
@@ -148,28 +148,35 @@ function Dashboard() {
                         {notepads &&
                             notepads.map(notepad => (
                                 <div key={notepad.id} className={styles.dashboard_table_notepad}>
-                                    <div>
-                                        <span>{notepad.notepadTitle}</span>
-                                        <div>
+                                    <div className={styles.notepad}>
+                                        <span className={styles.notepad_title}>{notepad.notepadTitle}</span>
+                                        <div className={styles.notepad_tags}>
                                             <span>Tags:</span>
                                             <span>
                                                 {notepad.tagsArray &&
                                                     notepad.tagsArray.map((tag, index) => (
                                                         <span key={index}>
-                                                            {`#${tag}   `}
+                                                            {`#${tag}      `}
                                                         </span>
                                                     ))
                                                 }
                                             </span>
                                         </div>
                                     </div>
-                                    <Link to={`/notes/${notepad.id}`}>
-                                        Ver anotações
-                                    </Link>
-                                    <Link to={`/notepads/${notepad.id}`}>- Editar</Link>
-                                    <Link to={'/'} onClick={() => deleteDocument(notepad.id)}>
-                                        <Trash size={24} color={'red'} />
-                                    </Link>
+                                    <div className={styles.actions}>
+                                        <Link to={`/notes/${notepad.id}`} className={styles.see}>
+                                            <Eye size={24} color={'blueviolet'} />
+                                            <span>Ver Anotações</span>
+                                        </Link>
+                                        <Link to={`/notepads/${notepad.id}`} className={styles.edit}>
+                                            <NotePencil size={24} color={'blue'} />
+                                            <span>Editar</span>
+                                        </Link>
+                                        <Link to={'/'} onClick={() => deleteDocument(notepad.id)} className={styles.delete}>
+                                            <Trash size={24} color={'red'} />
+                                            <span>Excluir</span>
+                                        </Link>
+                                    </div>
                                 </div>
                             ))
                         }

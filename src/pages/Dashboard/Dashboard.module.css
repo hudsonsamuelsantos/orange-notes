@@ -1,3 +1,10 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
 .user_stats_display {
     display: flex;
     justify-content: center;
@@ -31,6 +38,7 @@
     justify-content: center;
     align-items: center;
     margin: 2em auto;
+    width: 400px;
 }
 
 .search_form button {
@@ -48,6 +56,10 @@
 
 .search_form input {
     flex: 1;
+}
+
+.dashboard_table {
+    width: fit-content;
 }
 
 .dashboard_table_header {
@@ -69,8 +81,9 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    color: darkgreen;
+    color: green;
     transition: 0.4s;
+    font-size: small;
 }
 
 .dashboard_table_header_add:hover {
@@ -79,13 +92,75 @@
 
 .dashboard_table_notepad {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     border: 1px solid orange;
+    background-color: #fff;
+    color: #000;
+    gap: 24px;
 }
 
 .dashboard_table_header,
 .dashboard_table_notepad {
     padding: 0.4em 0.8em;
+}
+
+.notepad {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.notepad_title {
+    text-align: start;
+    font-weight: 500;
+    word-wrap: break-word;
+    width: 250px;
+}
+
+.notepad_tags {
+    display: flex;
+    gap: 4px;
+    font-size: smaller;
+    font-style: italic;
+}
+
+.actions {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    gap: 8px;
+    font-size: small;
+}
+
+.see {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: blueviolet;
+    transition: 0.4s;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: blue;
+    transition: 0.4s;
+}
+
+.delete {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: red;
+    transition: 0.4s;
+}
+
+.see:hover,
+.edit:hover,
+.delete:hover {
+    opacity: 0.6;
 }
 
 @media (max-width:600px) {
@@ -97,4 +172,39 @@
     .search_form {
         width: 250px;
     }
+
+    .notepad {
+        justify-content: space-between;
+    }
+
+    .notepad_title {
+        text-align: start;
+        font-weight: 500;
+        word-wrap: break-word;
+        font-size: smaller;
+        width: 100px;
+    }
+
+    .notepad_tags {
+        font-size: small;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .see,
+    .edit,
+    .delete,
+    .dashboard_table_header {
+        font-size: smaller;
+    }
+
+    .see,
+    .edit,
+    .delete {
+        width: 110px;
+    }
+
 }
