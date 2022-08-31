@@ -1,5 +1,7 @@
 import styles from './Search.module.css'
 
+import { useAuthValue } from '../../context/AuthContext'
+
 import { useQuery } from "../../hooks/useQuery"
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 
@@ -9,10 +11,13 @@ import { useDeleteDocument } from '../../hooks/useDeleteDocument'
 
 function Search() {
 
+    const { user } = useAuthValue()
+    const uid = user.uid
+
     const query = useQuery()
     const search = query.get('q')
 
-    const { documents: notepads } = useFetchDocuments('notepads', search)
+    const { documents: notepads } = useFetchDocuments('notepads', search, uid)
 
     const { deleteDocument } = useDeleteDocument('notepads')
 

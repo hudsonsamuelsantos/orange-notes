@@ -1,0 +1,78 @@
+.my_progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.user_stats_display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: .8em;
+    width: 400px;
+    padding: .4em;
+    gap: 1.8em;
+    background-color: orange;
+    color: #000;
+    transition: 0.4s;
+    margin-bottom: 2em;
+}
+
+.user_stats_display:hover {
+    cursor: default;
+}
+
+.user_name_display,
+.user_level_display,
+.user_points_display {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stats_table {
+    margin-top: 2em;
+    width: fit-content;
+}
+
+.stats_table_header {
+    display: flex;
+    align-items: center;
+    background-color: orange;
+    color: #000;
+    border-radius: .8em .8em 0 0;
+    gap: 5px;
+    padding: 0.4em 0.8em;
+}
+
+.stats_table_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid orange;
+    background-color: #fff;
+    color: #000;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    border: 1px solid orange;
+    text-align: start;
+    width: 250px;
+    padding: .6em .6em;
+    gap: 5px;
+}
+
+@media (max-width:600px) {
+    .user_stats_display {
+        font-size: x-small;
+        width: 250px;
+    }
+
+    .stat {
+        font-size: smaller;
+    }
+}

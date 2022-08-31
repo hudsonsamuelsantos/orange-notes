@@ -34,7 +34,8 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                 if (search) {
                     q = await query(
                         collectionRef,
-                        where('tagsArray', 'array-contains', search)
+                        where('tagsArray', 'array-contains', search),
+                        where('uid', '==', uid),
                     )
                 } else if (uid) {
                     q = await query(

@@ -1,8 +1,11 @@
+import styles from './MyProgress.module.css'
+
 import { useEffect, useState } from 'react'
 
 import { useAuthValue } from '../../context/AuthContext'
 
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
+import { ChartLineUp, Note, Notepad, TrendUp, Trophy, UserCircle } from 'phosphor-react'
 
 function MyProgress() {
 
@@ -83,20 +86,41 @@ function MyProgress() {
     }, [notepads])
 
     return (
-        <div>
-            <h1>Meu Progresso</h1>
-            <p>Acompanhe seu progresso em registrar e organizar seu conhecimento!</p>
+        <div className={styles.my_progress}>
 
-            <div>
-                <span>User: {user && user.displayName}</span>
-                <div>{mylevel}</div>
-                <div>Pontuação: {points}/{myNextLevelRequirement}</div>
+            <div className={styles.user_stats_display}>
+                <div className={styles.user_name_display}>
+                    <UserCircle size={32} />
+                    {user && user.displayName}
+                </div>
+                <div className={styles.user_level_display}>
+                    <Trophy size={32} />
+                    {mylevel}
+                </div>
+                <div className={styles.user_points_display}>
+                    <TrendUp size={32} />
+                    <span>Pontuação: {points}/{myNextLevelRequirement}</span>
+                </div>
             </div>
 
-            <div>
-                <h2>Minhas Estatísticas</h2>
-                <span>Blocos de notas criados: {notepadsNumber}</span>
-                <span>Anotações criadas: {notesNumber}</span>
+            <h1>Meu Progresso</h1>
+            <p>Veja de forma quantificada o seu progresso em registrar e organizar seu conhecimento!</p>
+
+            <div className={styles.stats_table}>
+                <div className={styles.stats_table_header}>
+                    <ChartLineUp size={32} color={'black'} />
+                    <span>Minhas Estatísticas</span>
+                </div>
+                <div className={styles.stats_table_body}>
+                    <div className={styles.stat}>
+                        <Notepad size={24} color={'black'} />
+                        <span>Blocos de notas criados: {notepadsNumber}</span>
+                    </div>
+                    <div className={styles.stat}>
+                        <Note size={24} color={'black'} />
+                        <span>Anotações criadas: {notesNumber}</span>
+                    </div>
+                </div>
             </div>
         </div>
     )
