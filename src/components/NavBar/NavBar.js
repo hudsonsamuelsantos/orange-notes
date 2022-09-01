@@ -33,11 +33,6 @@ export function NavBar() {
                     </ul>
                 </>
             }
-
-            {!user &&
-                <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '')}>Registre-se</NavLink>
-            }
-
         </nav>
     )
 }

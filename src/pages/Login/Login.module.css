@@ -1,7 +1,76 @@
 .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    color: #ffa500;
 }
 
 .login p {
-    color: #aaa;
+    margin: .8em 0 1.4em 0;
+}
+
+.login h1 {
+    margin: 0;
+}
+
+.login_display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1.4em;
+    gap: 10px;
+    width: 380px;
+}
+
+.login_display form {
+    width: 100%;
+}
+
+.login_display form input {
+    border-radius: 8px;
+}
+
+.svg {
+    width: 38%;
+    height: 38%;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: max-content;
+    margin: 0 auto 1.2em auto;
+}
+
+.btn {
+    background-color: #ffa500;
+    border: 1px solid orange;
+    border-radius: 8px;
+    padding: 0.3em 0.8em;
+    transition: 0.4s;
+    font-weight: bolder;
+}
+
+.btn:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@media (max-width:600px) {
+
+    .login_display {
+        width: 250px;
+    }
+
+    .login p {
+        font-size: smaller;
+    }
+
+    .svg {
+        width: 48%;
+        height: 48%;
+    }
 }
