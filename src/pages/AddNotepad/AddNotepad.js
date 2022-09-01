@@ -1,3 +1,5 @@
+import styles from './AddNotepad.module.css'
+
 import { useState } from 'react'
 
 import { useIsertDocument } from '../../hooks/useInsertDocument'
@@ -7,6 +9,8 @@ import { useAuthValue } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
 import { Link } from 'react-router-dom'
+
+import { ArrowCircleLeft } from 'phosphor-react'
 
 function AddNotepad() {
 
@@ -45,38 +49,45 @@ function AddNotepad() {
     }
 
     return (
-        <div>
-            <Link to={`/dashboard`}>- Voltar</Link>
-            <h1>Criar novo bloco de notas</h1>
+        <div className={styles.add_notepad}>
+            <div className={styles.back_to_dashboard_box}>
+                <Link to={`/dashboard`} className={styles.back_to_dashboard}>
+                    <ArrowCircleLeft size={32} />
+                    <span>Voltar</span>
+                </Link>
+            </div>
+            <h1>Criar Novo Bloco De Notas</h1>
             <p>Crie blocos para manter suas anotações organizadas!</p>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <span>Título do Bloco:</span>
-                    <input
-                        type="text"
-                        name='notepadTitle'
-                        required
-                        placeholder='Insira um título para o seu bloco de notas'
-                        value={notepadTitle}
-                        onChange={e => setNotepadTitle(e.target.value)}
-                    />
-                </label>
-                <label>
-                    <span>Tags:</span>
-                    <input
-                        type="text"
-                        name='tags'
-                        required
-                        placeholder='Insira as tags separadas por vírgula'
-                        value={tags}
-                        onChange={e => setTags(e.target.value)}
-                    />
-                </label>
-                {!response.loading && <button className='btn'>Criar</button>}
-                {response.loading && <button className='btn' disabled>Aguarde...</button>}
-                {response.error && <p className='error'>{response.error}</p>}
-                {formError && <p className='error'>{formError}</p>}
-            </form>
+            <div className={styles.add_notepad_display}>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <span>Título do Bloco:</span>
+                        <input
+                            type="text"
+                            name='notepadTitle'
+                            required
+                            placeholder='Insira um título para o seu bloco'
+                            value={notepadTitle}
+                            onChange={e => setNotepadTitle(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        <span>Tags:</span>
+                        <input
+                            type="text"
+                            name='tags'
+                            required
+                            placeholder='Insira as tags separadas por vírgula'
+                            value={tags}
+                            onChange={e => setTags(e.target.value)}
+                        />
+                    </label>
+                    {!response.loading && <button className={styles.btn}>Criar</button>}
+                    {response.loading && <button className={styles.btn} disabled>Aguarde...</button>}
+                    {response.error && <p className='error'>{response.error}</p>}
+                    {formError && <p className='error'>{formError}</p>}
+                </form>
+            </div>
         </div>
     )
 }
