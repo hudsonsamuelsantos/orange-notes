@@ -42,7 +42,7 @@ function Login() {
     return (
         <div className={styles.login}>
             <h1>Bem vindo ao OrangeNotes!</h1>
-            <p>Suas anotações salvas e organizadas em um só lugar!</p>
+            <p>Seu connhecimento registrado e organizado em um só lugar!</p>
             <LoginSvg className={styles.svg} />
             <div className={styles.login_display}>
                 <form onSubmit={handleSubmit}>
