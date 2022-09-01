@@ -1,4 +1,4 @@
-.add_note {
+.update_notepad {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,18 +7,18 @@
     color: #ffa500;
 }
 
-.add_note p {
-    margin: .8em 0 .8em 0;
+.update_notepad p {
+    margin: .8em 0 1.4em 0;
 }
 
-.add_note h1 {
+.update_notepad h1 {
     display: flex;
     width: 100%;
     justify-content: flex-start;
     margin: 0;
 }
 
-.add_note_display {
+.update_notepad_display {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -27,12 +27,12 @@
     width: 100%;
 }
 
-.add_note_display form {
+.update_notepad_display form {
     width: 100%;
 }
 
-.add_note_display form textarea {
-    border-radius: 8px 0 0 8px;
+.update_notepad_display form input {
+    border-radius: 8px;
 }
 
 .btn {
@@ -50,14 +50,14 @@
     cursor: pointer;
 }
 
-.back_to_note_box {
+.back_to_dashboard_box {
     display: flex;
     align-items: flex-start;
     width: 100%;
     margin-bottom: 2em;
 }
 
-.back_to_note {
+.back_to_dashboard {
     display: flex;
     align-items: center;
     width: fit-content;
@@ -65,17 +65,13 @@
     transition: 0.4s;
 }
 
-.back_to_note:hover {
+.back_to_dashboard:hover {
     opacity: 0.6;
 }
 
 @media (max-width:600px) {
 
-    .add_note_display {
+    .update_notepad_display {
         width: 250px;
-    }
-
-    .add_note p {
-        font-size: smaller;
     }
 }

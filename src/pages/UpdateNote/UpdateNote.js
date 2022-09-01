@@ -1,3 +1,5 @@
+import styles from './UpdateNote.module.css'
+
 import { useState, useEffect } from "react"
 
 import { useNavigate, useParams } from "react-router-dom"
@@ -11,6 +13,8 @@ import { useUpdateDocument } from '../../hooks/useUpdateDocument'
 import { useFetchDocuments } from "../../hooks/useFetchDocuments"
 
 import { Link } from "react-router-dom"
+
+import { ArrowCircleLeft } from 'phosphor-react'
 
 const UpdateNote = () => {
 
@@ -66,31 +70,40 @@ const UpdateNote = () => {
     }, [notepad])
 
     return (
-        <div>
-            <Link to={`/notes/${id}`}>- Voltar</Link>
-            <h1>Editar anotação</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <span>Anotação:</span>
-                    <input
-                        type='text'
-                        name='notes'
-                        required
-                        placeholder='Insira sua anotação'
-                        onChange={(e) => setNotes([e.target.value])}
-                        value={notes}
-                    />
-                </label>
-                {!response.loading && <button className="btn">Salvar</button>}
-                {response.loading && (
-                    <button className="btn" disabled>
-                        Aguarde.. .
-                    </button>
-                )}
-                {(response.error || formError) && (
-                    <p className="error">{response.error || formError}</p>
-                )}
-            </form>
+        <div className={styles.update_note}>
+            <div className={styles.back_to_note_box}>
+                <Link to={`/notes/${id}`} className={styles.back_to_note}>
+                    <ArrowCircleLeft size={32} />
+                    <span>Voltar</span>
+                </Link>
+            </div>
+            <h1>Editar Anotação</h1>
+            <div className={styles.update_note_display}>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <span>Anotação:</span>
+                        <textarea
+                            name='notes'
+                            required
+                            placeholder='Insira sua anotação'
+                            onChange={(e) => setNotes([e.target.value])}
+                            value={notes}
+                            id="text"
+                            cols="30"
+                            rows="6">
+                        </textarea>
+                    </label>
+                    {!response.loading && <button className={styles.btn}>Salvar</button>}
+                    {response.loading && (
+                        <button className={styles.btn} disabled>
+                            Aguarde.. .
+                        </button>
+                    )}
+                    {(response.error || formError) && (
+                        <p className="error">{response.error || formError}</p>
+                    )}
+                </form>
+            </div>
         </div>
     );
 };

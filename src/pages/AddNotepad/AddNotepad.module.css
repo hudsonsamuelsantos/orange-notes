@@ -12,6 +12,9 @@
 }
 
 .add_notepad h1 {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
     margin: 0;
 }
 

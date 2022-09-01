@@ -1,4 +1,4 @@
-.add_note {
+.update_note {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,18 +7,18 @@
     color: #ffa500;
 }
 
-.add_note p {
-    margin: .8em 0 .8em 0;
+.update_note p {
+    margin: .8em 0 1.4em 0;
 }
 
-.add_note h1 {
+.update_note h1 {
     display: flex;
     width: 100%;
     justify-content: flex-start;
     margin: 0;
 }
 
-.add_note_display {
+.update_note_display {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -27,11 +27,11 @@
     width: 100%;
 }
 
-.add_note_display form {
+.update_note_display form {
     width: 100%;
 }
 
-.add_note_display form textarea {
+.update_note_display form textarea {
     border-radius: 8px 0 0 8px;
 }
 
@@ -71,11 +71,7 @@
 
 @media (max-width:600px) {
 
-    .add_note_display {
+    .update_note_display {
         width: 250px;
-    }
-
-    .add_note p {
-        font-size: smaller;
     }
 }
