@@ -72,7 +72,7 @@ function Login() {
                     <div className={styles.actions}>
                         {!loading && <button className={styles.btn}>Entrar</button>}
                         {loading && <button className={styles.btn} disabled>Aguarde...</button>}
-                        <button onClick={() => navigate('/register')} className={styles.btn}>Registre-se</button>
+                        {!loading && <button onClick={() => navigate('/register')} className={styles.btn}>Registre-se</button>}
                     </div>
                     {error && <p className='error'>{error}</p>}
                 </form>
