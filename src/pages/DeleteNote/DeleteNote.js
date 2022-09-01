@@ -1,3 +1,5 @@
+import styles from './DeleteNote.module.css'
+
 import { useState, useEffect } from "react"
 
 import { useNavigate, useParams } from "react-router-dom"
@@ -55,10 +57,12 @@ const DeleteNote = () => {
 
     const cancel = () => navigate(`/notes/${id}`)
     return (
-        <div>
+        <div className={styles.confirm}>
             <h2>Tem certeza que deseja excluir essa anotação?</h2>
-            <button onClick={deleteNote}>Sim</button>
-            <button onClick={cancel}>Não</button>
+            <div className={styles.btns}>
+                <button className={styles.btn} onClick={deleteNote}>Sim</button>
+                <button className={styles.btn} onClick={cancel}>Não</button>
+            </div>
         </div>
     );
 };
