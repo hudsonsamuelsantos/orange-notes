@@ -8,6 +8,8 @@ import { ArrowCircleLeft } from 'phosphor-react'
 
 import { Link } from 'react-router-dom'
 
+import { toast } from 'react-toastify'
+
 function Register() {
 
     const [displayName, setDisplayName] = useState('')
@@ -15,15 +17,11 @@ function Register() {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
-    const [error, setError] = useState('')
-
     const { createUser, error: authError, loading } = useAuthentication()
 
     const handleSubmit = async (e) => {
 
         e.preventDefault()
-
-        setError('')
 
         const user = {
             displayName,
@@ -32,8 +30,12 @@ function Register() {
             confirmPassword,
         }
 
+        if (!displayName || !email || !password || !confirmPassword) {
+            toast.error('Por favor preencha todos os campos.')
+        }
+
         if (password !== confirmPassword) {
-            setError('As senhas precisam ser iguais. Tente novamente.')
+            toast.error('As senhas precisam ser iguais.')
         }
 
         const res = await createUser(user)
@@ -43,7 +45,7 @@ function Register() {
 
     useEffect(() => {
         if (authError) {
-            setError(authError)
+            toast.error(authError)
         }
     }, [authError])
 
@@ -105,7 +107,6 @@ function Register() {
                     </label>
                     {!loading && <button className={styles.btn} onClick={handleSubmit}>Cadastrar</button>}
                     {loading && <button className={styles.btn} onClick={handleSubmit} disabled>Aguarde...</button>}
-                    {error && <p className='error'>{error}</p>}
                 </form>
             </div>
         </div>

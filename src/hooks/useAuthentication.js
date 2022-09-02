@@ -64,7 +64,7 @@ export const useAuthentication = () => {
             } else if (error.message.includes('invalid-email')) {
                 systemErrorMessage = 'E-mail inválido. Tente novamente.'
             } else {
-                systemErrorMessage = 'Ocorreu um erro, por favor tente mais tarde.'
+                systemErrorMessage = 'Ocorreu um erro, por favor tente novamente.'
             }
 
             setLoading(false)
@@ -101,7 +101,7 @@ export const useAuthentication = () => {
             } else if (error.message.includes('wrong-password')) {
                 systemErrorMessage = 'Senha incorreta.'
             } else {
-                systemErrorMessage = 'Ocorreu um erro, por favor tente mais tarde.'
+                systemErrorMessage = 'Ocorreu um erro, por favor tente novamente.'
             }
 
             setLoading(false)
