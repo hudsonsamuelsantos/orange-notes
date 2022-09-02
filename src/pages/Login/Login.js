@@ -7,14 +7,12 @@ import { useEffect, useState } from 'react'
 import { useAuthentication } from '../../hooks/useAuthentication'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { toast, ToastContainer } from 'react-toastify'
-import { async } from '@firebase/util'
+import { toast } from 'react-toastify'
 
 function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
 
     const { login, error: authError, loading } = useAuthentication()
 
@@ -23,8 +21,6 @@ function Login() {
     const handleSubmit = async (e) => {
 
         e.preventDefault()
-
-        //setError('')
 
         const user = {
             email,
@@ -77,7 +73,6 @@ function Login() {
                         {loading && <button className={styles.btn} disabled>Aguarde...</button>}
                         {!loading && <button onClick={() => navigate('/register')} className={styles.btn}>Registre-se</button>}
                     </div>
-                    {error && <p className='error'>{error}</p>}
                 </form>
             </div>
 
