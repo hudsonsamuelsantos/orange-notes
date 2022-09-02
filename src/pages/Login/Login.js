@@ -7,6 +7,9 @@ import { useEffect, useState } from 'react'
 import { useAuthentication } from '../../hooks/useAuthentication'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { toast, ToastContainer } from 'react-toastify'
+import { async } from '@firebase/util'
+
 function Login() {
 
     const [email, setEmail] = useState('')
@@ -21,7 +24,7 @@ function Login() {
 
         e.preventDefault()
 
-        setError('')
+        //setError('')
 
         const user = {
             email,
@@ -35,7 +38,7 @@ function Login() {
 
     useEffect(() => {
         if (authError) {
-            setError(authError)
+            toast.error(authError)
         }
     }, [authError])
 
