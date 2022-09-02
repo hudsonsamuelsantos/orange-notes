@@ -23,6 +23,11 @@
 
 .links_list li {
     margin-right: 1em;
+    transition: 0.4s;
+}
+
+.links_list li:hover {
+    opacity: 0.6;
 }
 
 .links_list li a {
@@ -31,6 +36,7 @@
 
 .active {
     text-decoration: underline;
+    text-underline-offset: 5px;
 }
 
 @media (max-width:600px) {
@@ -53,6 +59,6 @@
         padding: 0;
         font-size: smaller;
         margin: 0;
-        margin-bottom: .8em;
+        margin-bottom: 1.2em;
     }
 }
