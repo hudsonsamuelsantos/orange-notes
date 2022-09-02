@@ -84,7 +84,7 @@ const SeeNotepad = () => {
                     notepad.notes.map((note, index) => (
                         <div key={index} className={styles.notes_table_body}>
                             <div className={styles.note}>
-                                <span>{note}</span>
+                                <textarea cols="30" rows="6" value={note} readOnly></textarea>
                             </div>
                             <div className={styles.actions}>
                                 <Link to={`/notes/update/${id}/${index}`} className={styles.edit}>
