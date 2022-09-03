@@ -71,7 +71,7 @@ function Search() {
                                                 <NotePencil size={24} color={'blue'} />
                                                 <span>Editar</span>
                                             </Link>
-                                            <Link to={'/'} onClick={() => deleteDocument(notepad.id)} className={styles.delete}>
+                                            <Link to={`/notepads/delete/${notepad.id}`} className={styles.delete}>
                                                 <Trash size={24} color={'red'} />
                                                 <span>Excluir</span>
                                             </Link>

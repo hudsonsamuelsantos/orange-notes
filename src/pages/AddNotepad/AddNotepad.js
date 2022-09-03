@@ -11,13 +11,13 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 import { ArrowCircleLeft } from 'phosphor-react'
+import { toast } from 'react-toastify'
 
 function AddNotepad() {
 
     const [notepadTitle, setNotepadTitle] = useState('')
     const [notes] = useState([])
     const [tags, setTags] = useState('')
-    const [formError, setFormError] = useState('')
 
     const { insertDocument, response } = useIsertDocument('notepads')
 
@@ -28,8 +28,6 @@ function AddNotepad() {
     const handleSubmit = e => {
 
         e.preventDefault()
-
-        setFormError('')
 
         const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
 
@@ -45,6 +43,8 @@ function AddNotepad() {
         setTags('')
 
         navigate('/dashboard')
+
+        toast.success('Bloco criado com sucesso!')
 
     }
 
@@ -84,8 +84,6 @@ function AddNotepad() {
                     </label>
                     {!response.loading && <button className={styles.btn}>Criar</button>}
                     {response.loading && <button className={styles.btn} disabled>Aguarde...</button>}
-                    {response.error && <p className='error'>{response.error}</p>}
-                    {formError && <p className='error'>{formError}</p>}
                 </form>
             </div>
         </div>

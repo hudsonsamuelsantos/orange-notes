@@ -13,8 +13,6 @@ import { Link } from 'react-router-dom'
 
 import { ArrowCircleLeft } from 'phosphor-react'
 
-import { toast } from 'react-toastify'
-
 function UpdateNotepad() {
 
     const { id } = useParams()
@@ -22,7 +20,6 @@ function UpdateNotepad() {
 
     const [notepadTitle, setNotepadTitle] = useState('Carregando...')
     const [tags, setTags] = useState('Carregando...')
-    const [formError, setFormError] = useState('')
 
     useEffect(() => {
         if (notepad) {
@@ -43,8 +40,6 @@ function UpdateNotepad() {
     const handleSubmit = e => {
 
         e.preventDefault()
-
-        setFormError('')
 
         const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
 
@@ -96,8 +91,6 @@ function UpdateNotepad() {
                     </label>
                     {!response.loading && <button className={styles.btn}>Salvar</button>}
                     {response.loading && <button className={styles.btn} disabled>Aguarde...</button>}
-                    {response.error && <p className='error'>{response.error}</p>}
-                    {formError && <p className='error'>{formError}</p>}
                 </form>
             </div>
         </div>
