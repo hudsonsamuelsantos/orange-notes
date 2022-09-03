@@ -22,6 +22,8 @@ function Dashboard() {
     const [mylevel, setMyLevel] = useState('...')
     const [myNextLevelRequirement, setMyNextLevelRequirement] = useState('...')
 
+    const myUser = user.displayName
+
     const { documents: notepads, loading } = useFetchDocuments('notepads', null, uid)
 
     const navigate = useNavigate()
@@ -97,7 +99,9 @@ function Dashboard() {
 
         }
 
-        setUsername(user.displayName)
+        if (myUser) {
+            setUsername(myUser)
+        }
 
     }, [notepads, user])
 

@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { useAuthentication } from '../../hooks/useAuthentication'
 
 import { useAuthValue } from '../../context/AuthContext'
+import { Note } from 'phosphor-react'
 
 export function NavBar() {
 
@@ -15,6 +16,7 @@ export function NavBar() {
     return (
         <nav className={styles.nav_bar}>
             <NavLink to='/' className={styles.brand}>
+                <Note size={32} color={'orange'} />
                 <span>Orange</span>Notes
             </NavLink>
 
