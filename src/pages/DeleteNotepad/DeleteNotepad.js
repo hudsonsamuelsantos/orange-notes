@@ -8,6 +8,8 @@ import { useFetchDocument } from '../../hooks/useFetchDocument'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import { useDeleteDocument } from '../../hooks/useDeleteDocument'
 
+import { toast } from 'react-toastify'
+
 const DeleteNotepad = () => {
 
     const { id } = useParams()
@@ -26,6 +28,7 @@ const DeleteNotepad = () => {
     const deleteNotepad = () => {
         deleteDocument(id)
         navigate('/dashboard')
+        toast.success('Bloco excluído com sucesso!')
     }
 
     return (
