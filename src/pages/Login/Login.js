@@ -22,6 +22,11 @@ function Login() {
 
         e.preventDefault()
 
+        if (!email || !password) {
+            toast.error('Por avor preencha todos os campos')
+            return
+        }
+
         const user = {
             email,
             password,
@@ -69,7 +74,7 @@ function Login() {
                     </label>
 
                     <div className={styles.actions}>
-                        {!loading && <button className={styles.btn}>Entrar</button>}
+                        {!loading && <button onClick={handleSubmit} className={styles.btn}>Entrar</button>}
                         {loading && <button className={styles.btn} disabled>Aguarde...</button>}
                         {!loading && <button onClick={() => navigate('/register')} className={styles.btn}>Registre-se</button>}
                     </div>
