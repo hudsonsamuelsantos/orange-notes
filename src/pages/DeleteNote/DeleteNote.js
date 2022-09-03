@@ -10,7 +10,9 @@ import { useFetchDocument } from '../../hooks/useFetchDocument'
 
 import { useUpdateDocument } from '../../hooks/useUpdateDocument'
 
-import { useFetchDocuments } from "../../hooks/useFetchDocuments"
+import { useFetchDocuments } from '../../hooks/useFetchDocuments'
+
+import { toast } from 'react-toastify'
 
 const DeleteNote = () => {
 
@@ -19,7 +21,6 @@ const DeleteNote = () => {
 
     const { documents: initialNotepad } = useFetchDocuments('notepads')
 
-    const [notes, setNotes] = useState('')
     const [initialNote, setInitialNote] = useState()
 
     const { user } = useAuthValue()
@@ -51,9 +52,9 @@ const DeleteNote = () => {
 
         navigate(`/notes/${id}`)
 
-    }
+        toast.success('Anotação excluída com sucesso')
 
-    console.log(id, index, initialNote);
+    }
 
     const cancel = () => navigate(`/notes/${id}`)
     return (

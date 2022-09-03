@@ -16,6 +16,8 @@ import { Link } from "react-router-dom"
 
 import { ArrowCircleLeft } from 'phosphor-react'
 
+import { toast } from 'react-toastify'
+
 const UpdateNote = () => {
 
     const { id, index } = useParams()
@@ -49,6 +51,8 @@ const UpdateNote = () => {
         updateDocument(id, data)
 
         navigate(`/notes/${id}`)
+
+        toast.success('As informações foram salvas com sucesso!')
 
     }
 

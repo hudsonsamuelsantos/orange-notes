@@ -13,6 +13,8 @@ import { Link } from 'react-router-dom'
 
 import { ArrowCircleLeft } from 'phosphor-react'
 
+import { toast } from 'react-toastify'
+
 function UpdateNotepad() {
 
     const { id } = useParams()
@@ -53,6 +55,8 @@ function UpdateNotepad() {
         updateDocument(id, data)
 
         navigate('/dashboard')
+
+        toast.success('As informações foram salvas com sucesso!')
 
     }
 
