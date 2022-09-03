@@ -29,12 +29,12 @@ function AddNotepad() {
 
         e.preventDefault()
 
+        const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
+
         if (!notepadTitle || !tagsArray) {
             toast.error('Por favor preencha todos os campos')
             return
         }
-
-        const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
 
         insertDocument({
             notepadTitle,

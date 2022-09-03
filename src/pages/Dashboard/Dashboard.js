@@ -16,6 +16,7 @@ function Dashboard() {
     const { user } = useAuthValue()
     const uid = user.uid
 
+    const [username, setUsername] = useState('...')
     const [query, setQuery] = useState('')
     const [points, setPoints] = useState('...')
     const [mylevel, setMyLevel] = useState('...')
@@ -70,6 +71,7 @@ function Dashboard() {
         setPoints('...')
         setMyLevel('...')
         setMyNextLevelRequirement('...')
+        setUsername('...')
 
         if (notepads) {
 
@@ -95,7 +97,9 @@ function Dashboard() {
 
         }
 
-    }, [notepads])
+        setUsername(user.displayName)
+
+    }, [notepads, user])
 
     return (
         <div className={styles.dashboard}>
@@ -105,7 +109,7 @@ function Dashboard() {
             >
                 <div className={styles.user_name_display}>
                     <UserCircle size={32} />
-                    {user && user.displayName}
+                    {username}
                 </div>
                 <div className={styles.user_level_display}>
                     <Trophy size={32} />
