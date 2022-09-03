@@ -25,7 +25,7 @@ const AddNote = () => {
 
     const { documents: initialNotepad } = useFetchDocuments('notepads')
 
-    const [notes, setNotes] = useState('')
+    const [notes, setNotes] = useState([''])
     const [initialNote, setInitialNote] = useState()
 
     const { user } = useAuthValue()
@@ -37,6 +37,13 @@ const AddNote = () => {
     const handleSubmit = (e) => {
 
         e.preventDefault()
+
+        const notesArrayClean = notes[0].trim()
+
+        if (!notesArrayClean) {
+            toast.error('Por favor preencha o campo de anotação.')
+            return
+        }
 
         const notesArray = initialNote.concat(notes)
 
@@ -86,7 +93,7 @@ const AddNote = () => {
                             rows="6">
                         </textarea>
                     </label>
-                    {!response.loading && <button className={styles.btn}>Criar anotação!</button>}
+                    {!response.loading && <button onClick={handleSubmit} className={styles.btn}>Criar anotação!</button>}
                     {response.loading && (
                         <button className={styles.btn} disabled>
                             Aguarde.. .

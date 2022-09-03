@@ -38,6 +38,15 @@ const UpdateNote = () => {
 
         e.preventDefault()
 
+        setNotes([''])
+
+        const notesArrayClean = notes[0].trim()
+
+        if (!notesArrayClean) {
+            toast.error('Por favor preencha o campo de anotação.')
+            return
+        }
+
         const array = initialNote
         const noteString = notes.toString()
         array.splice(index, 1, noteString)
@@ -94,7 +103,7 @@ const UpdateNote = () => {
                             rows="6">
                         </textarea>
                     </label>
-                    {!response.loading && <button className={styles.btn}>Salvar</button>}
+                    {!response.loading && <button onClick={handleSubmit} className={styles.btn}>Salvar</button>}
                     {response.loading && (
                         <button className={styles.btn} disabled>
                             Aguarde.. .
