@@ -18,5 +18,5 @@ html {
   flex: 1;
   width: 90%;
   max-width: 90vw;
-  margin: auto;
+  margin: 2em auto auto auto;
 }
