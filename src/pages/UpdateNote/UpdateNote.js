@@ -25,7 +25,6 @@ const UpdateNote = () => {
 
     const [notes, setNotes] = useState('Carregando...')
     const [initialNote, setInitialNote] = useState()
-    const [formError, setFormError] = useState("")
 
     const { user } = useAuthValue()
 
@@ -36,8 +35,6 @@ const UpdateNote = () => {
     const handleSubmit = (e) => {
 
         e.preventDefault()
-
-        setFormError('')
 
         const array = initialNote
         const noteString = notes.toString()
@@ -98,9 +95,6 @@ const UpdateNote = () => {
                         <button className={styles.btn} disabled>
                             Aguarde.. .
                         </button>
-                    )}
-                    {(response.error || formError) && (
-                        <p className="error">{response.error || formError}</p>
                     )}
                 </form>
             </div>
