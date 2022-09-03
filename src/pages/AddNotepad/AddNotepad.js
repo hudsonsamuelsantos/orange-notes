@@ -29,6 +29,11 @@ function AddNotepad() {
 
         e.preventDefault()
 
+        if (!notepadTitle || !tagsArray) {
+            toast.error('Por favor preencha todos os campos')
+            return
+        }
+
         const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
 
         insertDocument({
@@ -82,7 +87,7 @@ function AddNotepad() {
                             onChange={e => setTags(e.target.value)}
                         />
                     </label>
-                    {!response.loading && <button className={styles.btn}>Criar</button>}
+                    {!response.loading && <button onClick={handleSubmit} className={styles.btn}>Criar</button>}
                     {response.loading && <button className={styles.btn} disabled>Aguarde...</button>}
                 </form>
             </div>

@@ -43,6 +43,11 @@ function UpdateNotepad() {
 
         e.preventDefault()
 
+        if (!notepadTitle || !tagsArray) {
+            toast.error('Por favor preencha todos os campos')
+            return
+        }
+
         const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
 
         const data = {
@@ -93,7 +98,7 @@ function UpdateNotepad() {
                             onChange={e => setTags(e.target.value)}
                         />
                     </label>
-                    {!response.loading && <button className={styles.btn}>Salvar</button>}
+                    {!response.loading && <button onClick={handleSubmit} className={styles.btn}>Salvar</button>}
                     {response.loading && <button className={styles.btn} disabled>Aguarde...</button>}
                 </form>
             </div>
