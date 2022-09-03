@@ -16,6 +16,8 @@ import { Link } from "react-router-dom"
 
 import { ArrowCircleLeft } from 'phosphor-react'
 
+import { toast } from 'react-toastify'
+
 const AddNote = () => {
 
     const { id } = useParams()
@@ -25,7 +27,6 @@ const AddNote = () => {
 
     const [notes, setNotes] = useState('')
     const [initialNote, setInitialNote] = useState()
-    const [formError, setFormError] = useState("")
 
     const { user } = useAuthValue()
 
@@ -36,8 +37,6 @@ const AddNote = () => {
     const handleSubmit = (e) => {
 
         e.preventDefault()
-
-        setFormError('')
 
         const notesArray = initialNote.concat(notes)
 
@@ -50,6 +49,8 @@ const AddNote = () => {
         updateDocument(id, data)
 
         navigate(`/notes/${id}`)
+
+        toast.success('Anotação criada com sucesso!')
 
     }
 
@@ -90,9 +91,6 @@ const AddNote = () => {
                         <button className={styles.btn} disabled>
                             Aguarde.. .
                         </button>
-                    )}
-                    {(response.error || formError) && (
-                        <p className="error">{response.error || formError}</p>
                     )}
                 </form>
             </div>
