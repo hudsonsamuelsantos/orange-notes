@@ -10,3 +10,8 @@
   <img src="https://img.shields.io/badge/make%20with-ReactJS-%23ffa500?style=for-the-badge&logo=react" alt="ReactJS Badge">
   <img src="https://img.shields.io/badge/make%20with-Firebase-%23ffa500?style=for-the-badge&logo=firebase" alt="Firebase Badge">
 </div>
+
+<div>
+  <h2>Visão Geral</h2>
+  <p>OrangeNotes é uma plataforma web focada em trazer uma melhor experiência para seus processos de aprendizado, otimizando a maneira que você registra e organiza seu conhecimeto. ORGANIZE seus cursos, vídeo aulas, artigos, e qualquer outro assunto que desejar de forma fácil e rápida, VEJA SEU PROGRESSO através dos níveis de gameficação. 🚀 </p>
+</div>
