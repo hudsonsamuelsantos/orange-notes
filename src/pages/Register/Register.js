@@ -23,19 +23,21 @@ function Register() {
 
         e.preventDefault()
 
+        if (!displayName || !email || !password || !confirmPassword) {
+            toast.error('Por favor preencha todos os campos.')
+            return
+        }
+
+        if (password !== confirmPassword) {
+            toast.error('As senhas precisam ser iguais.')
+            return
+        }
+
         const user = {
             displayName,
             email,
             password,
             confirmPassword,
-        }
-
-        if (!displayName || !email || !password || !confirmPassword) {
-            toast.error('Por favor preencha todos os campos.')
-        }
-
-        if (password !== confirmPassword) {
-            toast.error('As senhas precisam ser iguais.')
         }
 
         const res = await createUser(user)
