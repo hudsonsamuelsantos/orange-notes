@@ -12,6 +12,10 @@
 </div>
 </br>
 
+<p align="center">Acesse o projeto: <a href="https://orangenotes.vercel.app/">orangenotes.vercel.app</a></p>
+</br>
+</br>
+
 <p align="center">
  <a href="#visao">Visão Geral</a> •
  <a href="#features">Features</a> • 
@@ -20,7 +24,8 @@
  <a href="#licenca">Licença</a> • 
  <a href="#autor">Autor</a>
 </p>
-
+</br>
+  
 <div id="visao">
   <h2>Visão Geral</h2>
   <p>OrangeNotes é uma plataforma web focada em trazer uma melhor experiência para seus processos de aprendizado, otimizando a maneira que você registra e organiza seu conhecimeto. ORGANIZE seus cursos, vídeo aulas, artigos, e qualquer outro assunto que desejar de forma fácil e rápida, VEJA SEU PROGRESSO através dos níveis de gameficação. 🚀 </p>
@@ -86,6 +91,14 @@
   </ul>
 </div>
 </br>
+
+<div id="licenca">
+  <h2>Licença</h2>
+  <p>Acesse a licença da aplicação:</p>
+  <a href="https://github.com/hudsonsamuelsantos/orange-notes/blob/main/LICENSE.md">
+    <img src="https://img.shields.io/badge/license-MIT-%23ffa500?style=for-the-badge" alt="License Badge">
+  </a>
+</div>
 
 <div id="autor">
   <h2>Autor</h2>
