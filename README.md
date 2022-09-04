@@ -78,7 +78,7 @@
   <p>Contrução da interface e lógica da aplicação:</p>
   <img src="https://img.shields.io/badge/-Reactjs-gray?style=for-the-badge&logo=react" alt="ReactJS Badge">
   <img src="https://img.shields.io/badge/-javascript-gray?style=for-the-badge&logo=javascript" alt="JavaScript Badge">
-  <p>Banco de dados e serviços de authenticação de usuários:</p>
+  <p>Banco de dados e serviço de autenticação de usuários:</p>
   <img src="https://img.shields.io/badge/-firebase-gray?style=for-the-badge&logo=firebase" alt="Firebase Badge">
   <p>Outras ferramentas/libs:</p>
   <ul>
@@ -94,7 +94,7 @@
 
 <div id="licenca">
   <h2>Licença</h2>
-  <p>Acesse a licença da aplicação:</p>
+  <p>Acesse a licença da aplicação clicando no badge abaixo:</p>
   <a href="https://github.com/hudsonsamuelsantos/orange-notes/blob/main/LICENSE.md">
     <img src="https://img.shields.io/badge/license-MIT-%23ffa500?style=for-the-badge" alt="License Badge">
   </a>
