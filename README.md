@@ -28,7 +28,7 @@
   
 <div id="visao">
   <h2>Visão Geral</h2>
-  <p>OrangeNotes é uma plataforma web focada em trazer uma melhor experiência para seus processos de aprendizado, otimizando a maneira que você registra e organiza seu conhecimeto. ORGANIZE seus cursos, vídeo aulas, artigos, e qualquer outro assunto que desejar de forma fácil e rápida, VEJA SEU PROGRESSO através dos níveis de gameficação. 🚀 </p>
+  <p>OrangeNotes é uma plataforma web focada em trazer uma melhor experiência para seus processos de aprendizado, otimizando a maneira que você registra e organiza seu conhecimeto. ORGANIZE seus cursos, vídeo aulas, artigos, e qualquer outro assunto que desejar, de forma fácil e rápida. Além disso, VEJA SEU PROGRESSO através dos níveis de gameficação. 🚀 </p>
 </div>
 </br>
 
